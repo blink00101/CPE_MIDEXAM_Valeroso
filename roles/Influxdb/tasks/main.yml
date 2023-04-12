@@ -1,0 +1,42 @@
+---
+- name: Creating Directory
+  tags: directory
+  file:
+    path: ~/influxdb
+    state: directory
+
+- name: Downloading and Extracting
+  tags: source
+  unarchive:
+    src: https://dl.influxdata.com/influxdb/releases/influxdb2-2.7.0-linux-arm64.tar.gz
+    dest: ~/influxdb
+    remote_src: yes
+    mode: 0777
+    owner: root
+    group: root
+
+- name: Adding Executables
+  tags: executables
+  shell: |
+    cd ~/influxdb/influxd*
+    cp -r . /usr/local/bin/influxd
+
+- name: Verifiying Installation
+  tags: serviceon
+  service:
+    name: influxdb
+    state: restarted
+    enabled: true
+
+- name: Stopping service
+  tags: serviceon
+  service:
+    name: influxdb
+    state: stopped
+
+- name: Starting and enabling influxdb service
+  service:
+    name: influxdb
+    state: started
+    daemon_reload: true
+    enabled: true

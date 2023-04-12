@@ -1,0 +1,27 @@
+---
+- hosts: Ubuntu
+  become: True
+  roles:
+    - nagios
+
+#- hosts: all
+ # become: true
+ # roles:
+  #  - Elastic_Stack
+
+- hosts: all
+  become: true
+  roles:
+    - prometheus
+
+#- hosts: all
+#  become: true
+ # roles:
+  #  - Influxdb
+
+
+- hosts: all
+  become: true
+  roles:
+    - Lamp_Stack
+

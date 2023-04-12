@@ -1,1 +1,0 @@
-# CPE_MIDEXAM_Valeroso
