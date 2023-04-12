@@ -8,17 +8,15 @@
  # become: true
  # roles:
   #  - Elastic_Stack
+  #  - kibana 
+  #  - logstash
 
 - hosts: all
   become: true
   roles:
     - prometheus
-
-#- hosts: all
-#  become: true
- # roles:
-  #  - Influxdb
-
+#    - influxdb
+#    - grafana
 
 - hosts: all
   become: true
